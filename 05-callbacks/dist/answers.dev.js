@@ -1,3 +1,5 @@
+"use strict";
+
 /**
  * @param {string} email
  * @param {string} password
@@ -5,27 +7,32 @@
  */
 function passwordChecker(email, password) {
   if (email === "jeff@jeff.jeff" && password === "jeff") {
-    return { name: "Jeff Jeffries", email: "jeff@jeff.jeff" };
+    return {
+      name: "Jeff Jeffries",
+      email: "jeff@jeff.jeff"
+    };
   }
+
   return undefined;
 }
-
 /**
  * @param {string} email
  * @param {string} password
  * @param {nodeStyleCallback} cb
  */
+
+
 function passwordCheckerCb(email, password, cb) {
-  const user = passwordChecker(email, password);
+  var user = passwordChecker(email, password);
+
   if (user) {
     cb(null, user);
   } else {
-    setTimeout(() => {
+    setTimeout(function () {
       cb("User Not Found!");
     }, 1000);
   }
 }
-
 /**
  *
  * EXERCISE 1:
@@ -34,14 +41,15 @@ function passwordCheckerCb(email, password, cb) {
  * @param {string} password
  * @returns {Promise<User, string>}
  */
+
+
 function passwordCheckerPrms(email, password) {
-  return new Promise((resolve, reject) => {
-    passwordCheckerCb(email, password, (error, user) => {
+  return new Promise(function (resolve, reject) {
+    passwordCheckerCb(email, password, function (error, user) {
       /* IMPLEMENT ME! */
     });
   });
 }
-
 /**
  *
  * EXERCISE 2
@@ -50,14 +58,15 @@ function passwordCheckerPrms(email, password) {
  * @param {*} fnParams
  * @return {Promise<any, any>}
  */
-function makePromiseFromFunctionWithCallback(fn, ...fnParams) {
-  /* 
-  Return a promise that 
-    - calls fn with the fnParams and a callback (like fn(...fnParams, cb))
-    - resolves with a value if the callback succeeds
-    - rejects with an error if the callback fails
-  */
-}
+
+
+function makePromiseFromFunctionWithCallback(fn) {}
+/* 
+Return a promise that 
+  - calls fn with the fnParams and a callback (like fn(...fnParams, cb))
+  - resolves with a value if the callback succeeds
+  - rejects with an error if the callback fails
+*/
 
 /**
  * @callback callbackStyleAsyncFunction
@@ -71,8 +80,9 @@ function makePromiseFromFunctionWithCallback(fn, ...fnParams) {
  * @param {*} Value
  */
 
+
 module.exports = {
-  passwordCheckerCb,
-  passwordCheckerPrms,
-  makePromiseFromFunctionWithCallback,
+  passwordCheckerCb: passwordCheckerCb,
+  passwordCheckerPrms: passwordCheckerPrms,
+  makePromiseFromFunctionWithCallback: makePromiseFromFunctionWithCallback
 };

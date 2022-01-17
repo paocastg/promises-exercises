@@ -1,3 +1,5 @@
+"use strict";
+
 /**
  *
  * EXERCISE 1
@@ -6,11 +8,10 @@
  * @param {function} asyncTransformer
  */
 function flatMapPromise(promise, asyncTransformer) {
-  return new Promise((resolve, reject) => {
-    promise.then(/* IMPLEMENT ME! */);
+  return new Promise(function (resolve, reject) {
+    promise.then();
   });
 }
-
 /**
  *
  * EXERCISE 2
@@ -18,10 +19,11 @@ function flatMapPromise(promise, asyncTransformer) {
  * @param {Promise} firstPromise
  * @param {function} slowAsyncProcess
  */
-function chainTwoAsyncProcesses(firstPromise, slowAsyncProcess) {
-  return firstPromise.then(/* IMPLEMENT ME! */);
-}
 
+
+function chainTwoAsyncProcesses(firstPromise, slowAsyncProcess) {
+  return firstPromise.then();
+}
 /**
  *
  * EXERCISE 3
@@ -29,6 +31,8 @@ function chainTwoAsyncProcesses(firstPromise, slowAsyncProcess) {
  * @param {function} getUserById
  * @param {function} getOrganizationById
  */
+
+
 function makeGetUserByIdWithOrganization(getUserById, getOrganizationById) {
   return function getUserByIdWithOrganization(userId) {
     /* IMPLEMENT ME! */
@@ -36,7 +40,7 @@ function makeGetUserByIdWithOrganization(getUserById, getOrganizationById) {
 }
 
 module.exports = {
-  flatMapPromise,
-  chainTwoAsyncProcesses,
-  makeGetUserByIdWithOrganization,
+  flatMapPromise: flatMapPromise,
+  chainTwoAsyncProcesses: chainTwoAsyncProcesses,
+  makeGetUserByIdWithOrganization: makeGetUserByIdWithOrganization
 };

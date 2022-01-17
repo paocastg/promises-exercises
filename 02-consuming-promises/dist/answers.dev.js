@@ -1,3 +1,5 @@
+"use strict";
+
 /**
  *
  * EXERCISE 1
@@ -8,7 +10,9 @@
  */
 function waitForPromise(promise, action) {
   /* IMPLEMENT ME */
-  return setTimeout(() => promise.then(action).catch(), 1002);
+  return setTimeout(function () {
+    return promise.then(action)["catch"]();
+  }, 1002);
 }
 /**
  *
@@ -18,16 +22,19 @@ function waitForPromise(promise, action) {
  * @param {consumer} consumer
  * @param {handler} handler
  */
+
+
 function consumePromise(promise, consumer, handler) {
   /* IMPLEMENT ME! */
-  promise.then(consumer).catch(handler);
+  promise.then(consumer)["catch"](handler);
 }
-
 /**
  * @callback thunk
  * @returns {void}
  */
+
+
 module.exports = {
-  waitForPromise,
-  consumePromise,
+  waitForPromise: waitForPromise,
+  consumePromise: consumePromise
 };

@@ -1,3 +1,5 @@
+"use strict";
+
 /**
  *
  * EXERCISE 1
@@ -7,11 +9,10 @@
  * @returns {Promise}
  */
 function mapPromise(promise, transformer) {
-  return new Promise((resolve, reject) => {
+  return new Promise(function (resolve, reject) {
     /* IMPLEMENT ME!! */
   });
 }
-
 /**
  *
  * EXERCISE 2
@@ -19,30 +20,33 @@ function mapPromise(promise, transformer) {
  * @param {Promise<number | string>} numberPromise
  * @returns {Promise<number>}
  */
-function squarePromise(numberPromise) {
-  return numberPromise.then(/* IMPLEMENT ME! */);
-}
 
+
+function squarePromise(numberPromise) {
+  return numberPromise.then();
+}
 /**
  * EXERCISE 3
  *
  * @param {Promise<number | string>} numberPromise
  * @returns {Promise<number>}
  */
-function squarePromiseOrZero(promise) {
-  return squarePromise(promise).catch(/* IMPLEMENT ME! */);
-}
 
+
+function squarePromiseOrZero(promise) {
+  return squarePromise(promise)["catch"]();
+}
 /**
  * EXERCISE 4
  *
  * @param {Promise} promise
  * @returns {Promise}
  */
-function switcheroo(promise) {
-  return promise.then(/* IMPLEMENT ME */);
-}
 
+
+function switcheroo(promise) {
+  return promise.then();
+}
 /**
  * @callback consumer
  * @param {*} value
@@ -53,9 +57,10 @@ function switcheroo(promise) {
  * @param {*} error
  */
 
+
 module.exports = {
-  mapPromise,
-  squarePromise,
-  squarePromiseOrZero,
-  switcheroo,
+  mapPromise: mapPromise,
+  squarePromise: squarePromise,
+  squarePromiseOrZero: squarePromiseOrZero,
+  switcheroo: switcheroo
 };
